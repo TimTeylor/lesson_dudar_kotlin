@@ -1,26 +1,39 @@
-var hello = "Hello World"
-var number_1 = 85
-var number_2 = 5
-
 fun main(args: Array<String>) {
-    var age: Int? = null
+    var word: String? = null
+    var isHasCar: Boolean = true
 
-    age = 44
+//    word = "Hello"
 
-    println("Переменаая: $age")
+    if(word == null) {
+        println("Переменная word равна значению null")
 
-    var name = "John"
-    var firstChar = 's'
+        if(!isHasCar || word == null)
+            println("Что-то сработало")
+    } else if(word == "Hello")
+        println("Переменная: $word")
+    else
+        print("Переменная word не равна значению null")
 
-    var isTrue: Boolean = true
-    var num: Float = 4.5f
-    var num_2: Double = 3.2353434
+    val number: Int = 50
+    when(number) {
+        null -> print("Переменная равна null")
+        10 -> print("Переменная равна 10")
+        6 -> print("Переменная равна 6")
+        190 -> print("Переменная равна 190")
+        5 -> print("Переменная равна 5")
+        else -> print("Переменная какая-то непонятная")
+    }
 
-    val number: Int = 6
+//    var res = 0
+//    if(number > 30)
+//        res = 1
+//    else
+//        res = 0
 
-    var res = number_1 + number_2
-    res %= 10
-    res--
+    var res = if(number > 30) 1 else 0
 
-    println("Результат: $res")
+    val words = when(number) {
+        null -> "Ничего"
+        else -> number
+    }
 }
