@@ -1,19 +1,17 @@
 fun main(args: Array<String>) {
-    val alex = User("Alex", "Marley")
+    val user = MainProvider()
+//    user.printInfo(User())
+//    println(user.getConnection())
 
-//    alex.firstName = "Alexander"
-    println(alex.firstName)
-//    alex.printUser()
+    checkDataTypes(user)
+}
 
-    alex.login = "Codi"
-    alex.login
+fun checkDataTypes(obj: MainProvider) {
+    if(obj is UserInfoProvider) {
+        obj.printInfo(User())
+    }
 
-    val john = User("John", "Doe")
-//    john.firstName = "John"
-//    john.secondName = "Doe"
-
-    val peter = User()
-    val bob = User(secondName = "Bob")
-
-    peter.login
+    if(obj is DbConnection) {
+        println(obj.getConnection())
+    }
 }
