@@ -10,7 +10,9 @@ interface DbConnection {
     fun getConnection() : String
 }
 
-class MainProvider : UserInfoProvider, DbConnection {
+open class MainProvider : UserInfoProvider, DbConnection {
+    protected open val db =  "DB Connected"
+
     override val info: String
         get() = "Method was called"
 
@@ -20,6 +22,6 @@ class MainProvider : UserInfoProvider, DbConnection {
     }
 
     override fun getConnection(): String {
-        return "DB Connected"
+        return db
     }
 }
