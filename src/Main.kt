@@ -1,38 +1,46 @@
-enum class Animals {
-    DOG, CAT, BEAR, LION;
+class Some {
+    companion object {
+        var count = 0
+    }
 
-    fun toLowerCase() = name.toLowerCase().capitalize()
+    init {
+        count++
+        println("Создано объектов: $count")
+    }
+}
+
+fun filterList(list: List<String>, filter: (String) -> Boolean) {
+    list.forEach { el ->
+        if(filter(el))
+            println(el)
+    }
+}
+
+val filter: (String) -> Boolean = {
+    it.startsWith("J")
 }
 
 fun main(args: Array<String>) {
-//    val user = NewClass()
-//    user.printInfo(User())
-//    println(user.getConnection())
+    val list = listOf("Java", "PHP", "Perl", "JavaScript", "C++")
+    filterList(list, filter)
 
-    val user = object : MainProvider() {
-        override fun printInfo(user: User) {
-            super.printInfo(user)
-            println("Выводится текст из класса наследника")
-        }
-    }
+//    val db = Db.MongoDb(5, "mongo")
+//    val db_2 = Db.PostgreSQL(5, "mongo", true)
+//
+//    val db_copy = db.copy(conn = "Done")
+//    if(db == db_copy)
+//        println("Они равны")
+//    else
+//        println("Они не равны")
+//
+//    if(db_copy is Db.MongoDb) {
+//        db_copy.printInfo()
+//    }
 
-    checkDataTypes(user)
+//    val test = Some()
+//    val test_2 = Some()
+//    val test_3 = Some()
+//    val test_4 = Some()
 
-    val animal = Animals.BEAR
-
-    when(animal) {
-        Animals.CAT -> println("Кошка")
-        Animals.BEAR -> println(animal.toLowerCase())
-        else -> println("Что-то другое")
-    }
-}
-
-fun checkDataTypes(obj: MainProvider) {
-    if(obj is UserInfoProvider) {
-        obj.printInfo(User())
-    }
-
-    if(obj is DbConnection) {
-        println(obj.getConnection())
-    }
+//    Some.count = 5
 }
